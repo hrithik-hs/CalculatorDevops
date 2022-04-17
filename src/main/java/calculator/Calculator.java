@@ -14,9 +14,9 @@ public class Calculator {
         Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
         double number1, number2;
-        do {
-            System.out.println("Calculator-DevOps, Choose to perform operation");
-            System.out.print("Press 1 to find factorial\nPress 2 to find Square root\nPress 3 to find power\nPress 4 to find natural logarithm\n" +
+        while (true){
+            System.out.println("Calculator-DevOps");
+            System.out.print("Press 1 to find factorial\nPress 2 to find Square root\nPress 3 to find power\nPress 4 to find logarithm\n" +
                     "Press 5 to exit\nEnter your choice: ");
             int choice;
             try {
@@ -64,12 +64,16 @@ public class Calculator {
                     System.out.println("Exiting....");
                     return;
             }
-        } while (true);
+        }
     }
 
 
     public double factorial(double number1) {
         logger.info("[FACTORIAL] - " + number1);
+        if(number1 < 0) {
+            logger.info("[ERROR - FACTORIAL: Negative Integer Found] - " + number1);
+            throw new IllegalArgumentException("Invalid Input: Found Negative Number");
+        }
         double f = 1;
         for(int i = 1; i <= number1; ++i)
             f *= i;
@@ -80,6 +84,10 @@ public class Calculator {
 
     public double sqrt(double number1) {
         logger.info("[SQ ROOT] - " + number1);
+        if(number1 < 0) {
+            logger.info("[ERROR - SQRT: Negative Integer Found] - " + number1);
+            throw new IllegalArgumentException("Invalid Input: Found Negative Number");
+        }
         double result = Math.sqrt(number1);
         logger.info("[RESULT - SQ ROOT] - " + result);
         return result;
@@ -97,9 +105,9 @@ public class Calculator {
         logger.info("[NATURAL LOG] - " + number1);
         double result = 0;
         try {
-
             if (number1 <0 ) {
                 result = Double.NaN;
+                logger.info("[ERROR - LOG: Negative Number Found] - " + number1);
                 throw new ArithmeticException("Case of NaN 0.0/0.0");
             }
             else {
