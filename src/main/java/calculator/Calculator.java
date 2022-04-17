@@ -67,12 +67,11 @@ public class Calculator {
         }
     }
 
-
     public double factorial(double number1) {
         logger.info("[FACTORIAL] - " + number1);
         if(number1 < 0) {
-            logger.info("[ERROR - FACTORIAL: Negative Integer Found] - " + number1);
-            throw new IllegalArgumentException("Invalid Input: Found Negative Number");
+            logger.info("[ERROR - FACTORIAL: Negative Integer] - " + number1);
+            throw new IllegalArgumentException("Invalid Input: Negative Number");
         }
         double f = 1;
         for(int i = 1; i <= number1; ++i)
@@ -85,17 +84,16 @@ public class Calculator {
     public double sqrt(double number1) {
         logger.info("[SQ ROOT] - " + number1);
         if(number1 < 0) {
-            logger.info("[ERROR - SQRT: Negative Integer Found] - " + number1);
-            throw new IllegalArgumentException("Invalid Input: Found Negative Number");
+            logger.info("[ERROR - SQRT: Negative Integer] - " + number1);
+            throw new IllegalArgumentException("Invalid Input: Negative Number");
         }
         double result = Math.sqrt(number1);
         logger.info("[RESULT - SQ ROOT] - " + result);
         return result;
     }
 
-
     public double power(double number1, double number2) {
-        logger.info("[POWER - " + number1 + " RAISED TO] " + number2);
+        logger.info("[POWER - " + number1 + "TO POWER] " + number2);
         double result = Math.pow(number1,number2);
         logger.info("[RESULT - POWER] - " + result);
         return result;
@@ -107,14 +105,14 @@ public class Calculator {
         try {
             if (number1 <0 ) {
                 result = Double.NaN;
-                logger.info("[ERROR - LOG: Negative Number Found] - " + number1);
-                throw new ArithmeticException("Case of NaN 0.0/0.0");
+                logger.info("[ERROR - LOG: Negative Number] - " + number1);
+                throw new ArithmeticException("Case of NaN");
             }
             else {
                 result = Math.log(number1);
             }
         } catch (ArithmeticException error) {
-            System.out.println("[EXCEPTION - LOG] - Cannot find log of negative numbers " + error.getLocalizedMessage());
+            System.out.println("[EXCEPTION - LOG] -negative numbers " + error.getLocalizedMessage());
         }
         logger.info("[RESULT - NATURAL LOG] - " + result);
         return result;
