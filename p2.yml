@@ -1,0 +1,8 @@
+---
+- name: Deploy a jar file
+  hosts: all
+  tasks:
+    - name: hrithikhs/scientific_calculator_with_devops
+      docker_image:
+        name: hrithikhs/scientific_calculator_with_devops
+        source: pull
